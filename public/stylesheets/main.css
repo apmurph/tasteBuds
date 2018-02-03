@@ -1,0 +1,104 @@
+.thumbnail img {
+    width: 100%;
+}
+.thumbnail {
+    padding: 0;
+}
+.thumbnail .caption-full {
+    padding: 9px;
+}
+.deleteForm {
+    display: inline;
+}
+.blogger-details {
+    display: none;
+}
+#blogger-checkbox {
+    margin: 5px;
+}
+#blogger-checkbox:checked + .blogger-details {
+	display: block;
+}
+.blogger-thumbnail {
+    border-radius: 50%;
+}
+
+.star {
+    color: gold;
+    float: right;
+    padding-right: 5px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.restaurant-title {
+    background-color: #337ab7;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+.restaurant-quote {
+    font-style: italic;
+    font-size: 4rem;
+}
+.comments-ratings {
+    margin-bottom: 25px;
+}
+.comments-ratings li {
+    width: calc(99% / 3);
+    padding: 3px 15px;
+    display: inline-block;
+}
+textarea {
+    width: 100%;
+}
+
+.rest-list-img img {
+    max-height: 350px;
+}
+.rest-list-img {
+	transform: scale(1.03);
+    transition: 1s;
+}
+
+.activate {
+	transform: translateY(0px);
+}
+.deactivate {
+	transform: translateY(30px);
+}
+
+.navbar-header {
+    display: flex;
+}
+.menu div {
+    width: 30px;
+	height: 16px;
+	margin: 18px 20px;
+	display: flex;
+	flex-direction: column;
+	background: white;
+	color: #777;
+}
+.menu span {
+    display: block;
+	margin-bottom: 5px;
+	border-bottom: 3px solid #777;
+	text-transform: uppercase;
+}
+.menu span:last-of-type {
+	margin-bottom: 0;
+}
+.menu:hover .floatMenu {
+	opacity: 1;
+	left: 180px;
+}
+.floatMenu {
+    transition: 0.5s;
+	opacity: 0;
+	position: absolute;
+	top: 15px;
+	left: 175px;
+}
+	

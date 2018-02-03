@@ -1,0 +1,108 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <% restaurant.authDetails.forEach(function(blogger){ %>
+                <a href="/bloggers/<%=blogger.id%>">
+                    <img class="img-responsive blogger-thumbnail" src="<%= blogger.image %>">
+                </a>
+                <p class="lead"> <%= blogger.username%></p>
+                <div class="list-group">
+                    <li class="list-group-item active">
+                        <div>
+                            Taste
+                            <% for(var i = 0; i < restaurant.ratings.taste; i++) {%>
+                                <i class="fa fa-star star" aria-hidden="true"></i>
+                            <% } %>
+                        </div>
+                    </li>
+                    <li class="list-group-item active">
+                        <div>
+                            Price
+                            <% for(var i = 0; i < restaurant.ratings.price; i++) {%>
+                                <i class="fa fa-star star" aria-hidden="true"></i>
+                            <% } %>
+                        </div>
+                    </li>
+                    <li class="list-group-item active">
+                        <div>
+                            Service
+                            <% for(var i = 0; i < restaurant.ratings.service; i++) {%>
+                                <i class="fa fa-star star" aria-hidden="true"></i>
+                            <% } %>
+                        </div>
+                    </li>
+                </div>
+                <p class="lead"> <%= blogger.username%> says.....</p>
+            <% }) %>
+            <p class="restaurant-quote">"<%= restaurant.quote%>"</p>
+            <a class="btn btn-default" href="/restaurants">Go Back</a>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <h2 class="restaurant-title"><a><%=restaurant.name%>
+                    <% var rating = Math.round((parseInt(restaurant.ratings.taste) + parseInt(restaurant.ratings.price) + parseInt(restaurant.ratings.service))/3);%>
+                    <% for(var i = 0; i < rating; i++) {%>
+                        <i class="fa fa-star star" aria-hidden="true"></i>
+                    <% } %>
+                </a></h2>
+                <img class="img-responsive" src="<%= restaurant.image %>">
+                <div class="caption-full">
+                    <h4 class="restaurant-title"><a><%=restaurant.name%></a> - <%=restaurant.address%> <%=restaurant.postcode%> </h4>
+                    <p><%= restaurant.description %></p> 
+                    <p>
+                        <em>Submitted on: <%= restaurant._id.getTimestamp().getDate()%>-<%= restaurant._id.getTimestamp().getMonth() + 1 %>-<%= restaurant._id.getTimestamp().getFullYear()%></em>
+                    </p>    
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/edit">Edit</a>
+                        <form class="deleteForm" action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
+                            <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                     <a class="btn btn-success" href="/restaurants/<%= restaurant._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% restaurant.comments.forEach(function(comment){ %>
+                    <div class="row comments-ratings">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="pull-right">10 days ago</span>
+                            <p>
+                                <%= comment.text %>
+                            </p>
+                             <li class="list-group-item active">
+                                Taste
+                                <% for(var i = 0; i < comment.taste; i++) {%>
+                                    <i class="fa fa-star star" aria-hidden="true"></i>
+                                <% } %>
+                            </li>
+                            <li class="list-group-item active">
+                                Price
+                                <% for(var i = 0; i < comment.price; i++) {%>
+                                    <i class="fa fa-star star" aria-hidden="true"></i>
+                                <% } %>
+                            </li>
+                            <li class="list-group-item active">
+                                Service
+                                <% for(var i = 0; i < comment.service; i++) {%>
+                                    <i class="fa fa-star star" aria-hidden="true"></i>
+                                <% } %>
+                            </li>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %> 
+                                <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                                <form class="deleteForm" action="/restaurants/<%=restaurant._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                </form>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

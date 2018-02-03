@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class"row">
+        <h1 style="text-align:center;">Edit <%= restaurant.name %></h1>
+        <div style="width: 40%; margin: 30px auto;">
+            <form action="/restaurants/<%= restaurant._id%>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[name]" placeholder="Name of Restaurant" value="<%=restaurant.name%>">    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[address]"  placeholder="Address" value="<%=restaurant.address%>">    
+                </div>   
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[postcode]"  placeholder="Postcode" value="<%=restaurant.postcode%>">    
+                </div> 
+                <div class="form-group">
+                    <input class="form-control" type="number" name="restaurant[contact]"  placeholder="Contact Number" value="<%=restaurant.contact%>">    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[website]"  placeholder="Website" value="<%=restaurant.website%>">    
+                </div>  
+                <div class="form-group">
+                    <input class="form-control" type="email" name="restaurant[email]" placeholder="Email Address" value="<%=restaurant.email%>">    
+                </div>                
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[image]" placeholder="URL of Restaurant Image" value="<%=restaurant.image%>">                    
+                </div> 
+                <div class="form-group">
+                    <input class="form-control" type="text"  name="restaurant[description]" placeholder="Review" value="<%=restaurant.description%>">                    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[quote]" placeholder="Headline Quote.." value="<%=restaurant.quote%>" maxlength="100">                    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="restaurant[ratings.taste]" value="<%=restaurant.ratings.taste%>" min="0" max="5" step="1">    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="restaurant[ratings.price]" value="<%=restaurant.ratings.price%>" min="0" max="5" step="1">    
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="restaurant[ratings.service]" value="<%=restaurant.ratings.service%>" min="0" max="5" step="1">    
+                </div>                
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit</button>    
+                </div>
+            </form>
+            <a href="/restaurants">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <a class="btn btn-primary btn-large" href="/bloggers">Check out our Blogger Profiles</a>
+            <h1>Welcome to TasteBuds !</h1>  
+            <p>Review our hand-picked restaurants from all across Toronto</p>
+            <p>
+               <% if(!currentUser){ %>
+                <% } else if(currentUser.blogger === 'on') { %>
+                    <a class="btn btn-primary btn-large" href="/restaurants/new">Add New Restaurant</a>
+               <% } else { %>
+               <% } %>
+            </p>
+        </div>
+    </header>
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% restaurants.forEach(function(restaurant) { %>
+            <div class="col-md-6 col-sm-6 rest-list-img">
+                <div class="thumbnail">
+                    <div>
+                        <img src="<%= restaurant.image %>">
+                    </div>
+                    <div class="caption">
+                        <h3><%= restaurant.name %></h3>
+                        <p class="restaurant-quote">"<%= restaurant.quote%>"</p>
+                        <% restaurant.authDetails.forEach(function(blogger){ %>
+                            <% var rating = Math.round((parseInt(restaurant.ratings.taste) + parseInt(restaurant.ratings.price) + parseInt(restaurant.ratings.service))/3);%>
+                            <% for(var i = 0; i < rating; i++) {%>
+                                <i class="fa fa-star star" aria-hidden="true"></i>
+                            <% } %>
+                            <a href="/bloggers/<%=blogger.id%>">
+                                <h5>Reviewd by: <%= blogger.username %></h5>
+                            </a>
+                        <% }) %>
+                    </div>
+                    <p>
+                        <a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %> 
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/jquery-visible-master/jquery.visible.js"></script>  
+<script src="restaurantList.js"></script>
+<% include ../partials/footer %>
