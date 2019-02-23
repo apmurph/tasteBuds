@@ -18,7 +18,7 @@ var commentRoutes    = require("./routes/comments"),
     bloggersRoutes = require("./routes/bloggers"),
     apiblognoteRoutes = require("./routes/apiblognotes")
   
-mongoose.connect("mongodb://localhost/taste_buds_v3");
+mongoose.connect("mongodb://localhost/taste_buds_v5");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -32,7 +32,7 @@ app.use(flash());
 // PASSPORT CONFIGURATION
 
 app.use(require("express-session")({
-    secret: "",
+    secret: "Mabel is the smelliest dog in the world",
     resave: false,
     saveUninitialized: false
 }));

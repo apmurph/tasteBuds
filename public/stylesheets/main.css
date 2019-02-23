@@ -68,9 +68,19 @@ textarea {
 .deactivate {
 	transform: translateY(30px);
 }
+.container-fluid {
+    transition: 1s;
+}
 
 .navbar-header {
     display: flex;
+    transition: 1s;
+}
+.hide-navbar-brand {
+	display: none;
+}
+.moveRight {
+	margin-left: 275px;
 }
 .menu div {
     width: 30px;
@@ -101,4 +111,51 @@ textarea {
 	top: 15px;
 	left: 175px;
 }
-	
+aside {
+	position: fixed;
+	height: auto;
+	background: #1D1D1F;
+	width: 275px;
+	top: 0;
+	bottom: 0;
+	transition: 1s;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: column;
+	z-index: 1000;
+}
+.sideMenu {
+	left: -275px;
+	justify-content: space-between;
+}
+.sideMenu h3 {
+	color: #FFF;
+	padding-left: 40px;
+	margin-top: 100px;
+}
+.sideMenu ul {
+	list-style-type: none;
+}
+.sideMenu ul li {
+	color: #9c9c9c;
+	padding-bottom: 30px;
+}
+.sideMenu footer {
+	display: flex;
+	flex-direction: row;
+	margin-top: 50px;
+	border-top: 1px solid #333335;
+}
+.sideMenu footer div {
+	height: 60px;
+	width: calc(100% / 3);
+	border-right: 1px solid #333335;
+	line-height: 60px;
+	text-align: center;
+}
+.sideMenu a {
+	color: #9c9c9c;
+}
+.showSideMenu {
+	left: 0;
+}
